@@ -1,0 +1,383 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "qa-esp-AncillaryContent"
+  },
+  "host": "hkxuj87qe8.execute-api.eu-west-1.amazonaws.com",
+  "basePath": "/qa",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v1/ancillarycontent": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "contentrequest",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response"
+          },
+          "400": {
+            "description": "400 response"
+          },
+          "404": {
+            "description": "404 response"
+          },
+          "500": {
+            "description": "500 response"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/v1/ancillarycontent/{id}": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response"
+          },
+          "400": {
+            "description": "400 response"
+          },
+          "404": {
+            "description": "404 response"
+          },
+          "500": {
+            "description": "500 response"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/v1/contentrequests/ancillarycontent": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uploadedby",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response"
+          },
+          "400": {
+            "description": "400 response"
+          },
+          "404": {
+            "description": "404 response"
+          },
+          "500": {
+            "description": "500 response"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Bearer",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "AncillaryContentRequestBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AncillaryContentRequestBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/AncillaryContentResponse"
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "schema": {
+              "$ref": "#/definitions/AncillaryContentBadRequestResponse"
+            }
+          },
+          "404": {
+            "description": "404 response",
+            "schema": {
+              "$ref": "#/definitions/AncillaryContentResourceNotAvailResponse"
+            }
+          },
+          "500": {
+            "description": "500 response",
+            "schema": {
+              "$ref": "#/definitions/AncillaryContentServerErrorResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/v1/contentrequests/ancillarycontent/{id}": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response"
+          },
+          "400": {
+            "description": "400 response"
+          },
+          "404": {
+            "description": "404 response"
+          },
+          "500": {
+            "description": "500 response"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response"
+          },
+          "400": {
+            "description": "400 response"
+          },
+          "404": {
+            "description": "404 response"
+          },
+          "500": {
+            "description": "500 response"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "x-api-key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "AncillaryContentServerErrorResponse": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string",
+          "description": "INTERNAL_SERVER_ERROR"
+        }
+      },
+      "title": "AncillaryContentServerErrorResponse"
+    },
+    "AncillaryContentRequestBody": {
+      "type": "object",
+      "properties": {
+        "isbn": {
+          "type": "string",
+          "description": "The ISBN of a book to which the ancillary content will be initially associated"
+        },
+        "pii": {
+          "type": "string",
+          "description": "The PII of a chapter to which the ancillary content will be initially associated"
+        },
+        "filename": {
+          "type": "string",
+          "description": "Name of the Asset to be uploaded"
+        },
+        "label": {
+          "type": "string",
+          "description": "Form Display text / label"
+        },
+        "multipart": {
+          "type": "string",
+          "description": "Represents that the file is multipart upload"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the form"
+        },
+        "year": {
+          "type": "string",
+          "description": "Year of upload"
+        },
+        "creationdate": {
+          "type": "string",
+          "description": "Date of upload"
+        },
+        "createdby": {
+          "type": "string",
+          "description": "User / uploaded ID"
+        },
+        "language": {
+          "type": "string",
+          "description": "Langauge of the Asset"
+        },
+        "publicationdate": {
+          "type": "string",
+          "description": "Asset ppublication date"
+        },
+        "type": {
+          "type": "string",
+          "description": "Single / Bulk  Upload"
+        },
+        "format": {
+          "type": "string",
+          "description": "Format of the asset"
+        },
+        "country": {
+          "type": "string",
+          "description": "Country Name"
+        },
+        "speciality": {
+          "type": "string",
+          "description": "Asset Speciallity"
+        },
+        "author": {
+          "type": "string",
+          "description": "Author of the Asset"
+        },
+        "location": {
+          "type": "string",
+          "description": "Tmp location of S3 where the client uploads the Asset"
+        },
+        "callbackurl": {
+          "type": "string",
+          "description": "A URL location that will be called when the ancillary request has completed"
+        }
+      },
+      "title": "AncillaryContentRequestBody"
+    },
+    "AncillaryContentBadRequestResponse": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string",
+          "description": "BAD_REQUEST"
+        }
+      },
+      "title": "AncillaryContentBadRequestResponse"
+    },
+    "AncillaryContentResourceNotAvailResponse": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string",
+          "description": "CONTENT_NOT_AVAILABLE"
+        }
+      },
+      "title": "AncillaryContentResourceNotAvailResponse"
+    },
+    "AncillaryContentResponse": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "UID of the Ancillary Content Request. Where this is a single piece of content, this will also be the UID of the piece of content"
+        },
+        "location": {
+          "type": "string",
+          "description": "Location / directory where the AC stored in Secure Bucket"
+        }
+      },
+      "title": "AncillaryContentResponse"
+    }
+  }
+}
